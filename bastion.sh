@@ -1,0 +1,12 @@
+#!/bin/bash
+  su - ubuntu -c "sudo apt update -y"
+  su - ubuntu -c "sudo apt install awscli -y"
+  su - ubuntu -c "curl -LO https://dl.k8s.io/release/v1.23.6/bin/linux/amd64/kubectl"
+  su - ubuntu -c "sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl"
+  su - ubuntu -c "echo 'source <(kubectl completion bash)' >>~/.bashrc"
+  su - ubuntu -c "echo 'alias k=kubectl' >>~/.bashrc"
+  su - ubuntu -c "echo 'complete -o default -F __start_kubectl k' >>~/.bashrc"
+  su - ubuntu -c "echo export AWS_ACCESS_KEY_ID=<ACCESS_KEY> >>~/.bashrc"
+  su - ubuntu -c "echo export AWS_SECRET_ACCESS_KEY=<SECRET_ACCESS_KEY> >>~/.bashrc"
+  su - ubuntu -c "source .bashrc"
+  su - ubuntu -c "aws eks update-kubeconfig --region ap-southeast-2 --name first_team_project_eks_cluster"
