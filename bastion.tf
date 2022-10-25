@@ -1,6 +1,6 @@
 # bastion 용도의 ec2 인스턴스 생성
 resource "aws_instance" "bastion" {
-  ami                    = "ami-055166f8a8041fbf1" # ap-southeast-2 amazon linux
+  ami                    = "ami-055166f8a8041fbf1" # ap-southeast-2 ubuntu 20.04 LTS
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.public_subnet.0.id
   key_name               = aws_key_pair.bastion_key.key_name
